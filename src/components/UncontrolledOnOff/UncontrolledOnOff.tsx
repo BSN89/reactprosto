@@ -1,20 +1,28 @@
+
+
 import React, {useState} from 'react';
 import s from './UncontrolledOnOff.module.css'
 
-
-type OnOffType = {
-    state: boolean
-    onClick: () => void
+type UncontrolledOnProps = {
+    onChange: (state: boolean) => void
 }
 
-export const UncontrolledOnOff = ({state, onClick}: OnOffType) => {
+export const UncontrolledOnOff  = ({onChange}: UncontrolledOnProps) => {
 
-
+    let [state, setState] = useState(false)
+    const onClicked = () => {
+        setState(true)
+        onChange(state)
+    }
+    const offClicked = () => {
+        setState(false)
+        onChange(state)
+    }
 
     return (
         <div className={s.main}>
-            <span onClick={ onClick } className={state ? s.on : s.neutral}>ON</span>
-            <span onClick={ onClick } className={!state ? s.off : s.neutral}>OFF</span>
+            <span onClick={ onClicked } className={state ? s.on : s.neutral}>ON</span>
+            <span onClick={ offClicked } className={!state ? s.off : s.neutral}>OFF</span>
             <span className={state ? s.neutralOn : s.neutralOff}></span>
 
         </div>

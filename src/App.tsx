@@ -12,10 +12,8 @@ export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 const App = () => {
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
-    let [state, setState] = useState(false)
-    const changeAccordion = (newStatus: boolean) => {
-        setAccordionCollapsed(newStatus)
-    }
+    let [switchOn, setSwitchOn] = useState(false)
+
     const changeRating = (newValue: RatingValueType) => {
         setRatingValue(newValue)
     }
@@ -23,8 +21,8 @@ const App = () => {
     console.log('App rendering')
     return (
         <div className="App">
-            <OnOff/>
-            <UncontrolledOnOff state={state} onClick={ () =>  setState(!state)}/>
+
+            <UncontrolledOnOff onChange={ () =>  setSwitchOn(!switchOn)}/>{switchOn.toString()}
 
             <Rating value={ratingValue} setRatingValue={changeRating}/>
             <UncontrolledRating/>
@@ -33,7 +31,7 @@ const App = () => {
             <Accordion
                 titleValue={'USER'}
                 collapsed={accordionCollapsed}
-                onClick={changeAccordion}
+                onClick={ () => setAccordionCollapsed(!accordionCollapsed) }
             />
 
 
