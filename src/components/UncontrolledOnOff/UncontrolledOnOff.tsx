@@ -5,11 +5,12 @@ import s from './UncontrolledOnOff.module.css'
 
 type UncontrolledOnProps = {
     onChange: (state: boolean) => void
+    defaultOn: boolean
 }
 
-export const UncontrolledOnOff  = ({onChange}: UncontrolledOnProps) => {
+export const UncontrolledOnOff  = ({onChange, defaultOn}: UncontrolledOnProps) => {
 
-    let [state, setState] = useState(false)
+    let [state, setState] = useState(defaultOn ? defaultOn : false)
     const onClicked = () => {
         setState(true)
         onChange(state)

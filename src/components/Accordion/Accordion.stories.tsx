@@ -9,7 +9,7 @@ export default {
     component: Accordion,
 }
 const actionClick = action("Accordion changing collapsed")
-export const OnCollapsedMode = () =>  <Accordion titleValue={'USER'} collapsed={true} onClick={  actionClick }/>
+export const OnCollapsedMode = () =>  <Accordion titleValue={'Menu'} collapsed={true} onClick={  actionClick }/>
 export const OffCollapsedMode = () => <Accordion titleValue={'Menu'} collapsed={false} onClick={  actionClick }/>
 
 

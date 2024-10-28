@@ -1,40 +1,29 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Accordion} from "./components/Accordion/Accordion";
-import {Rating} from "./components/Rating/Rating";
-import {OnOff} from "./components/OnOff/OnOff";
-import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
-import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
-import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+
+import { Selected} from "./Select/Select";
+import {UseEffect} from "./components/UseEffect/UseEffect";
 
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 const App = () => {
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
-    let [switchOn, setSwitchOn] = useState(false)
-
+    const [switchOn, setSwitchOn] = useState(false)
+    const [state, setState] = useState(false)
+    const [cityState, setCityState] = useState(0)
     const changeRating = (newValue: RatingValueType) => {
         setRatingValue(newValue)
     }
 
-    console.log('App rendering')
+    console.log( cityState)
+
     return (
         <div className="App">
 
-            <UncontrolledOnOff onChange={ () =>  setSwitchOn(!switchOn)}/>{switchOn.toString()}
+            <Selected setCityState={setCityState}/>
 
-            <Rating value={ratingValue} setRatingValue={changeRating}/>
-            <UncontrolledRating/>
-            <UncontrolledAccordion titleValue={'Menu'}/>
-            <UncontrolledAccordion titleValue={'Users'}/>
-            <Accordion
-                titleValue={'USER'}
-                collapsed={accordionCollapsed}
-                onClick={ () => setAccordionCollapsed(!accordionCollapsed) }
-            />
-
-
+            <UseEffect cityState={cityState}/>
         </div>
 
     );
