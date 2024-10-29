@@ -1,0 +1,37 @@
+
+.clock{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.clockMode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #0c242f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.mePlease{
+    padding-top: 30px;
+}
+
+.clockMode:hover {
+    background-color: #275c7a;
+}
+
+.clockMode svg {
+    color: #ffc600;
+    transition: color 0.3s ease;
+}
+
+.clockMode:hover svg {
+    color: #fff;
+}
